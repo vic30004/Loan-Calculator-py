@@ -45,22 +45,29 @@ class LoanCalculator:
 
         # Functions
 
-        def computePayment(self):
-            monthlyPayment = self.getMonthlyPayment(
-                float(self.loanAmountVar.get()),
-                float(self.annualInterestRateVar.get())/1200,
-                int(self.numberofYearsVar.get()))
+    def computePayment(self):
+        monthlyPayment = self.getMonthlyPayment(
+            float(self.loanAmountVar.get()),
+            float(self.annualInterestRateVar.get())/1200,
+            int(self.numberofYearsVar.get()))
 
-            self.monthlyPaymentVar.set(format(monthlyPayment, '10.2f'))
-            totalPayment = float(self.monthlyPaymentVar.get()*12
-                                 * int(self.numberofYearsVar.get()))
+        self.monthlyPaymentVar.set(format(monthlyPayment, '10.2f'))
+        totalPayment = float(self.monthlyPaymentVar.get()*12
+                             * int(self.numberofYearsVar.get()))
 
-            self.totalPaymentVar.set(format(totalPayment, '10.2f'))
+        self.totalPaymentVar.set(format(totalPayment, '10.2f'))
 
-        def getMonthlyPayment(self,loanAmount,monthlyInterestRate,numberofYears):
-            monthlyPayment = loanAmount * monthlyInterestRate / (1-1/(1+monthlyInterestRate)** (numberofYears*12))
-            return monthlyPayment
-        
-        
+    def getMonthlyPayment(self, loanAmount, monthlyInterestRate, numberofYears):
+        monthlyPayment = loanAmount * monthlyInterestRate / \
+            (1-1/(1+monthlyInterestRate) ** (numberofYears*12))
+        return monthlyPayment
+
+    def delete_all(self):
+        self.monthlyPaymentVar.set("")
+        self.loanAmountVar.set("")
+        self.annualInterestRateVar.set("")
+        self.numberofYearsVar.set("")
+        self.totalPaymentVar.set("")
+
 
 LoanCalculator()
