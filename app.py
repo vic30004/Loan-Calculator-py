@@ -57,5 +57,10 @@ class LoanCalculator:
 
             self.totalPaymentVar.set(format(totalPayment, '10.2f'))
 
+        def getMonthlyPayment(self,loanAmount,monthlyInterestRate,numberofYears):
+            monthlyPayment = loanAmount * monthlyInterestRate / (1-1/(1+monthlyInterestRate)** (numberofYears*12))
+            return monthlyPayment
+        
+        
 
 LoanCalculator()
