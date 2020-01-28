@@ -35,5 +35,11 @@ class LoanCalculator:
         lblTotalPayment = Label(window, font='Helvetica 12 bold', bg="light green",
                                 textvariable=self.totalPaymentVar).grid(row=5, column=2, sticky=E)
 
+        # Buttons
+        btnComputePayment = Button(window, text="Compute Payment", bg="dark green", fg="white",
+                                   font="Helvetica 14 bold", command=self.computePayment).grid(row=6, column=2, sticky=E)
+        btClear = Button(window, text="Clear", bg="red", fg="white", font="Helvetica 14 bold",
+                         command=self.delete_all).grid(row=6, column=8, sticky=E)
+
 
 LoanCalculator()
