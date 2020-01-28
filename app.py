@@ -41,5 +41,21 @@ class LoanCalculator:
         btClear = Button(window, text="Clear", bg="red", fg="white", font="Helvetica 14 bold",
                          command=self.delete_all).grid(row=6, column=8, sticky=E)
 
+        window.mainloop()
+
+        # Functions
+
+        def computePayment(self):
+            monthlyPayment = self.getMonthlyPayment(
+                float(self.loanAmountVar.get()),
+                float(self.annualInterestRateVar.get())/1200,
+                int(self.numberofYearsVar.get()))
+
+            self.monthlyPaymentVar.set(format(monthlyPayment, '10.2f'))
+            totalPayment = float(self.monthlyPaymentVar.get()*12
+                                 * int(self.numberofYearsVar.get()))
+
+            self.totalPaymentVar.set(format(totalPayment, '10.2f'))
+
 
 LoanCalculator()
